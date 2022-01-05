@@ -1,0 +1,27 @@
+{% block melv_page_product_detail_property_groups_label %}
+    {# Create empty array outside loop #}
+    {% set masterProperties = [] %}
+    {# @var product \Shopware\Core\Content\Product\SalesChannel\SalesChannelProductEntity #}
+    {% for group in page.product.sortedProperties|sort((a, b) => a.extensions["melv_property_group_master"].translated.name <=> b.extensions["melv_property_group_master"].translated.name) %}
+        {# Short variable #}
+        {% set masterProperty = group.extensions["melv_property_group_master"].translated.name %}
+        {% if masterProperty is empty %}
+            {% set masterProperty = "melvPropertyGroups.other"|trans|sw_sanitize %}
+        {% endif %}
+        {# Check if master property is already in array, if not show label #}
+        {% if masterProperty not in masterProperties %}
+            {% set masterProperties = masterProperties|merge([masterProperty]) %}
+            <tr class="bg-transparent">
+                <td class="h4">
+                    {{ masterProperty }}:
+                </td>
+            </tr>
+        {% endif %}
+        {# Load correct block for template designers :) #}
+        {% if page.product.cmsPage %}
+            {{ block('component_product_properties_table_row', '@Storefront/storefront/component/product/properties.html.twig' ) }}
+        {% else %}
+            {{ block('page_product_detail_properties_table_row', '@Storefront/storefront/page/product-detail/properties.html.twig' ) }}
+        {% endif %}
+    {% endfor %}
+{% endblock %}

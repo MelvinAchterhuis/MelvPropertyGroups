@@ -1,0 +1,28 @@
+{
+    "name": "melvinachterhuis/property-groups-shopware6-plugin",
+    "description": "Group properties on product detail page",
+    "version": "1.0.0",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Melvin Achterhuis"
+        }
+    ],
+    "type": "shopware-platform-plugin",
+    "autoload": {
+        "psr-4": {
+            "Melv\\PropertyGroups\\": "src/"
+        }
+    },
+    "extra": {
+        "shopware-plugin-class": "Melv\\PropertyGroups\\MelvPropertyGroups",
+        "label": {
+            "de-DE": "Gruppeneingenschaften",
+            "en-GB": "Property groups"
+        },
+        "description": {
+            "de-DE": "Gruppeneigenschaften auf der Produktdetailseite",
+            "en-GB": "Group properties on product detail page"
+        }
+    }
+}

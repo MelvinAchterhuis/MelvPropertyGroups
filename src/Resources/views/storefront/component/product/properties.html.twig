@@ -1,0 +1,11 @@
+{% sw_extends '@Storefront/storefront/component/product/properties.html.twig' %}
+
+{% block component_product_properties_table %}
+    <table class="table table-striped product-detail-properties-table">
+        <tbody>
+            {% block melv_page_product_detail_property_groups %}
+                {% sw_include '@MelvPropertyGroups/storefront/plugin/master-property.html.twig' %}
+            {% endblock %}
+        </tbody>
+    </table>
+{% endblock %}
